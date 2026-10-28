@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="t d">
+  <title id="t">ShopPilot BD dashboard preview</title>
+  <desc id="d">Seller dashboard showing today's orders, revenue, due cash on delivery, a weekly sales chart and recent orders.</desc>
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10b981" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity=".06"/>
+    </filter>
+  </defs>
+
+  <!-- window -->
+  <rect width="960" height="600" rx="18" fill="#ffffff"/>
+  <rect width="960" height="44" rx="18" fill="#f1f5f9"/>
+  <rect y="26" width="960" height="18" fill="#f1f5f9"/>
+  <circle cx="26" cy="22" r="6" fill="#f87171"/>
+  <circle cx="46" cy="22" r="6" fill="#fbbf24"/>
+  <circle cx="66" cy="22" r="6" fill="#34d399"/>
+  <rect x="300" y="12" width="360" height="20" rx="10" fill="#ffffff"/>
+  <text x="480" y="26" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#64748b">app.shoppilot.com.bd/dashboard</text>
+
+  <!-- sidebar -->
+  <rect x="0" y="44" width="190" height="556" fill="#ffffff"/>
+  <line x1="190" y1="44" x2="190" y2="600" stroke="#e2e8f0"/>
+  <text x="22" y="82" font-family="ui-monospace,monospace" font-size="15" font-weight="700" fill="#047857">ShopPilot <tspan fill="#0f172a">BD</tspan></text>
+  <text x="22" y="102" font-family="ui-monospace,monospace" font-size="11" fill="#64748b">Nusrat Boutique</text>
+  <rect x="12" y="122" width="166" height="30" rx="8" fill="#ecfdf5"/>
+  <g font-family="ui-monospace,monospace" font-size="12" fill="#334155">
+    <text x="30" y="141" fill="#047857" font-weight="600">Dashboard</text>
+    <text x="30" y="177">Orders</text>
+    <text x="30" y="209">Products</text>
+    <text x="30" y="241">Customers</text>
+    <text x="30" y="273">WhatsApp Inbox</text>
+    <text x="30" y="305">Reports</text>
+  </g>
+  <rect x="150" y="262" width="22" height="16" rx="8" fill="#10b981"/>
+  <text x="161" y="274" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="#fff" font-weight="700">3</text>
+
+  <!-- main -->
+  <rect x="191" y="44" width="769" height="556" fill="#f8fafc"/>
+  <text x="222" y="88" font-family="ui-monospace,monospace" font-size="20" font-weight="700" fill="#0f172a">Today</text>
+  <text x="222" y="108" font-family="ui-monospace,monospace" font-size="11" fill="#64748b">Asia/Dhaka · updated just now</text>
+
+  <!-- KPI cards -->
+  <g filter="url(#sh)">
+    <rect x="222" y="126" width="168" height="86" rx="12" fill="#fff" stroke="#e2e8f0"/>
+    <rect x="404" y="126" width="168" height="86" rx="12" fill="#fff" stroke="#e2e8f0"/>
+    <rect x="586" y="126" width="168" height="86" rx="12" fill="#fff" stroke="#e2e8f0"/>
+    <rect x="768" y="126" width="168" height="86" rx="12" fill="#fff" stroke="#e2e8f0"/>
+  </g>
+  <g font-family="ui-monospace,monospace">
+    <text x="238" y="152" font-size="11" fill="#64748b">Orders today</text>
+    <text x="238" y="184" font-size="24" font-weight="700" fill="#0f172a">24</text>
+    <text x="238" y="202" font-size="10" fill="#059669">▲ 18% vs yesterday</text>
+
+    <text x="420" y="152" font-size="11" fill="#64748b">Revenue</text>
+    <text x="420" y="184" font-size="24" font-weight="700" fill="#0f172a">৳31,450</text>
+    <text x="420" y="202" font-size="10" fill="#059669">▲ 9%</text>
+
+    <text x="602" y="152" font-size="11" fill="#64748b">COD due</text>
+    <text x="602" y="184" font-size="24" font-weight="700" fill="#0f172a">৳12,800</text>
+    <text x="602" y="202" font-size="10" fill="#d97706">7 orders out for delivery</text>
+
+    <text x="784" y="152" font-size="11" fill="#64748b">Low stock</text>
+    <text x="784" y="184" font-size="24" font-weight="700" fill="#e11d48">3</text>
+    <text x="784" y="202" font-size="10" fill="#64748b">variants need restock</text>
+  </g>
+
+  <!-- chart card -->
+  <rect x="222" y="228" width="440" height="344" rx="12" fill="#fff" stroke="#e2e8f0" filter="url(#sh)"/>
+  <text x="240" y="256" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#0f172a">Sales · last 7 days</text>
+  <g stroke="#f1f5f9">
+    <line x1="252" y1="300" x2="644" y2="300"/>
+    <line x1="252" y1="360" x2="644" y2="360"/>
+    <line x1="252" y1="420" x2="644" y2="420"/>
+    <line x1="252" y1="480" x2="644" y2="480"/>
+  </g>
+  <line x1="252" y1="530" x2="644" y2="530" stroke="#cbd5e1"/>
+  <path d="M272 470 L328 440 L384 452 L440 400 L496 410 L552 352 L608 318 L608 530 L272 530 Z" fill="url(#area)"/>
+  <g fill="url(#bar)">
+    <rect x="260" y="470" width="24" height="60" rx="5"/>
+    <rect x="316" y="440" width="24" height="90" rx="5"/>
+    <rect x="372" y="452" width="24" height="78" rx="5"/>
+    <rect x="428" y="400" width="24" height="130" rx="5"/>
+    <rect x="484" y="410" width="24" height="120" rx="5"/>
+    <rect x="540" y="352" width="24" height="178" rx="5"/>
+    <rect x="596" y="318" width="24" height="212" rx="5"/>
+  </g>
+  <polyline points="272,470 328,440 384,452 440,400 496,410 552,352 608,318" fill="none" stroke="#047857" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="608" cy="318" r="5" fill="#fff" stroke="#047857" stroke-width="2.5"/>
+  <g font-family="ui-monospace,monospace" font-size="10" fill="#94a3b8" text-anchor="middle">
+    <text x="272" y="550">Sat</text><text x="328" y="550">Sun</text><text x="384" y="550">Mon</text>
+    <text x="440" y="550">Tue</text><text x="496" y="550">Wed</text><text x="552" y="550">Thu</text><text x="608" y="550">Fri</text>
+  </g>
+
+  <!-- recent orders -->
+  <rect x="678" y="228" width="258" height="344" rx="12" fill="#fff" stroke="#e2e8f0" filter="url(#sh)"/>
+  <text x="696" y="256" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#0f172a">Recent orders</text>
+  <g font-family="ui-monospace,monospace" font-size="11">
+    <g>
+      <text x="696" y="292" fill="#0f172a" font-weight="600">SP-1024</text>
+      <text x="696" y="308" fill="#64748b">Rahim · ৳1,250</text>
+      <rect x="846" y="280" width="74" height="20" rx="10" fill="#dbeafe"/>
+      <text x="883" y="294" text-anchor="middle" fill="#1d4ed8" font-size="10">confirmed</text>
+    </g>
+    <line x1="696" y1="322" x2="920" y2="322" stroke="#f1f5f9"/>
+    <g>
+      <text x="696" y="346" fill="#0f172a" font-weight="600">SP-1023</text>
+      <text x="696" y="362" fill="#64748b">Nadia · ৳2,380</text>
+      <rect x="846" y="334" width="74" height="20" rx="10" fill="#ede9fe"/>
+      <text x="883" y="348" text-anchor="middle" fill="#6d28d9" font-size="10">shipped</text>
+    </g>
+    <line x1="696" y1="376" x2="920" y2="376" stroke="#f1f5f9"/>
+    <g>
+      <text x="696" y="400" fill="#0f172a" font-weight="600">SP-1022</text>
+      <text x="696" y="416" fill="#64748b">Karim · ৳890</text>
+      <rect x="846" y="388" width="74" height="20" rx="10" fill="#d1fae5"/>
+      <text x="883" y="402" text-anchor="middle" fill="#047857" font-size="10">delivered</text>
+    </g>
+    <line x1="696" y1="430" x2="920" y2="430" stroke="#f1f5f9"/>
+    <g>
+      <text x="696" y="454" fill="#0f172a" font-weight="600">SP-1021</text>
+      <text x="696" y="470" fill="#64748b">Sumi · ৳1,590</text>
+      <rect x="846" y="442" width="74" height="20" rx="10" fill="#fef3c7"/>
+      <text x="883" y="456" text-anchor="middle" fill="#b45309" font-size="10">pending</text>
+    </g>
+    <line x1="696" y1="484" x2="920" y2="484" stroke="#f1f5f9"/>
+    <g>
+      <text x="696" y="508" fill="#0f172a" font-weight="600">SP-1020</text>
+      <text x="696" y="524" fill="#64748b">Tanvir · ৳3,100</text>
+      <rect x="846" y="496" width="74" height="20" rx="10" fill="#d1fae5"/>
+      <text x="883" y="510" text-anchor="middle" fill="#047857" font-size="10">delivered</text>
+    </g>
+  </g>
+</svg>

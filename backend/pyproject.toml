@@ -1,0 +1,16 @@
+[project]
+name = "shoppilot-backend"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+    "ignore:Dialect sqlite\\+pysqlite does \\*not\\* support Decimal objects natively",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"

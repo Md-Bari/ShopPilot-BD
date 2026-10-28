@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+table th {
+  @apply text-left text-xs font-semibold uppercase tracking-wide text-slate-500;
+}
+
+/* ---------- Landing page motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.reveal {
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+}
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-25px, 20px) scale(0.95);
+  }
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    animation: fade-up 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-blob {
+    animation: blob 14s ease-in-out infinite;
+  }
+  .text-shine {
+    animation: shine 6s linear infinite;
+  }
+}
+
+.text-shine {
+  background-image: linear-gradient(90deg, #047857, #10b981, #34d399, #10b981, #047857);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.landing-section {
+  scroll-margin-top: 5rem;
+}

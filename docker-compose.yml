@@ -1,0 +1,77 @@
+# Local / single-server stack: PostgreSQL + FastAPI + Next.js
+#   docker compose up --build            -> http://localhost:3000 (UI), http://localhost:8000/api/docs (API)
+#   docker compose run --rm backend-tests -> backend tests against PostgreSQL
+
+name: shoppilot
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-shoppilot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-shoppilot}
+      POSTGRES_DB: ${POSTGRES_DB:-shoppilot}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-shoppilot} -d ${POSTGRES_DB:-shoppilot}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-shoppilot}:${POSTGRES_PASSWORD:-shoppilot}@db:5432/${POSTGRES_DB:-shoppilot}
+      MEDIA_DIR: /app/media
+    volumes:
+      - media:/app/media
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        BACKEND_INTERNAL_URL: http://backend:8000
+        SITE_URL: ${FRONTEND_URL:-http://localhost:3000}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  backend-tests:
+    profiles: ["test"]
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: "true"
+    environment:
+      RUN_MIGRATIONS: "false"
+      TEST_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-shoppilot}:${POSTGRES_PASSWORD:-shoppilot}@db:5432/shoppilot_test
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >
+        python -c "import psycopg; c=psycopg.connect('postgresql://${POSTGRES_USER:-shoppilot}:${POSTGRES_PASSWORD:-shoppilot}@db:5432/postgres', autocommit=True);
+        c.execute('DROP DATABASE IF EXISTS shoppilot_test'); c.execute('CREATE DATABASE shoppilot_test')" && pytest -p no:cacheprovider
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  media:
